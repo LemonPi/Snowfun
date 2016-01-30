@@ -88,6 +88,7 @@ function initLevel(json) {
 	console.log(initLevel);
 	curLevel = JSON.parse(json);
 	startScene("scenesbefore");
+	createBlocks();
 }
 
 $(document).ready(initUi);

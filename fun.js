@@ -72,20 +72,20 @@ var blocks = {
 	},
 	"outvar": {
 		create: function(state) {
-			var a = $("<div class='block outvar'><div class='block-innodule'/></div>").draggable();
+			var a = $("<div><a class='block outvar'/></div>").draggable();
 			a.find(".block-text").text(state.val);
 			return a;
 		},
 	},
 };
 
+var blockContainer;
+
 function makeBlock(name, state) {
 	var a = blocks[name].create(state);
 	a.css("position", "absolute");
 	a.addClass("holder");
-	if (state && state.position) {
-		a.position({left: state.position.x, right: state.position.y});
-	}
+	console.log(state);
 	a.find(".block-nodule").draggable({
 		drag: function (e, ui) {
 			var b = $(this);
@@ -93,6 +93,7 @@ function makeBlock(name, state) {
 		}
 	});
 	if (state && state.value) a.find(".block").text(state.value);
+	if (state && state.hint) a.attr("data-hint", JSON.stringify(state.hint));
 	a.uniqueId();
 	return a;
 }
@@ -107,6 +108,26 @@ function checkSolution() {
 	
 }
 
+function createBlocks() {
+	blockContainer.empty();
+	for (var i = 0; i < curLevel.init.length; i++) {
+		var a = makeBlock(curLevel.init[i].block.type, curLevel.init[i].block);
+		blockContainer.append(a);
+		a.css("left", curLevel.init[i].position.x*30 + "px").css("top", curLevel.init[i].position.y*30 + "px");
+	}
+
+	for (var i = 0; i < curLevel.draggables.length; i++) {
+		var dragged = makeBlock(curLevel.draggables[i].type, curLevel.draggables[i]);
+		dragged.css("right", "0px")
+		blockContainer.append(dragged);
+	}
+}
+
+$(document).ready(function(e) {
+	blockContainer = $(".block-container");
+});
+
+/*
 $(document).ready(function(e) {
 	//$("body").append(makeBlock("for", null));
 	$("body").append(makeBlock("var", {value: 42}));
@@ -114,3 +135,4 @@ $(document).ready(function(e) {
 	$("body").append(makeBlock("combine", null));
 	$("body").append(makeBlock("subroutine", null));
 });
+*/

@@ -2,3 +2,7 @@
 	background-color: blue;
 	height: 3px;
 }
+
+.block-nodule {
+	z-index: 1;
+}
