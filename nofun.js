@@ -12,6 +12,9 @@ function advanceDialogue() {
 	advanceScene();
 }
 
+var imgType = ".png";
+var imgFolder = "img/";
+
 function advanceScene() {
 	var newsceneind = ++currentSceneIndex;
 	if (newsceneind >= currentScenes.length) {
@@ -19,7 +22,15 @@ function advanceScene() {
 		return;
 	}
 	var newScene = currentScenes[newsceneind];
-	$(".scene-speaker").attr("src", newScene.speaker).attr("alt", newScene.speaker);
+	$(".scene-speaker").attr("src", imgFolder + newScene.speaker + ".png").attr("alt", imgFolder + newScene.speaker + ".png");
+	if (newScene.position === "left") {
+		$(".scene-speaker").addClass("left");
+		$(".scene-speaker").removeClass("right");
+	}
+	else {
+		$(".scene-speaker").removeClass("left");
+		$(".scene-speaker").addClass("right");		
+	}
 	currentTextIndex = -1;
 	advanceText();
 }

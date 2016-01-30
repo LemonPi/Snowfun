@@ -1,0 +1,109 @@
+.left {
+	position:absolute;
+	left:20px;
+	bottom:30px;
+}
+.right {
+	position:absolute;
+	right:20px;
+	bottom:30px;
+}
+
+.holder {
+	display:flex;
+	align-items:center;
+}
+.block {
+    position: relative;
+    padding: 10px 40px;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Helvetica', cursive;
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;  
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+    /* Animation */
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+.blockafter {
+    position: relative;
+    padding: 20px;
+    margin-left:-10px;
+    float: left;
+    border-radius: 50px;
+    font-family: 'Helvetica', cursive;
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;  
+    text-shadow: 0px -2px #2980B9;
+    /* Animation */
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.block:hover, 
+.block:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+.block:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
+
+.var
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
+}
+.varafter {
+    background-color: rgba(41, 128, 185, 0.9);
+}
+
+.if
+{
+	background-color: #E74C3C;
+	border-bottom: 5px solid #BD3E31;
+	text-shadow: 0px -2px #BD3E31;
+}
+.ifafter {
+	background-color: rgba(189, 62, 49, 0.9);
+}
+
+.for
+{
+	background-color: #82BF56;
+	border-bottom: 5px solid #669644;
+	text-shadow: 0px -2px #669644;
+}
+.forafter {
+	background-color: rgba(102, 150, 68, 0.9);
+}
+
+.combine
+{
+	background-color: #F2CF66;
+	border-bottom: 5px solid #D1B358;
+	text-shadow: 0px -2px #D1B358;
+}
+.combineafter {
+	background-color: rgba(209, 179, 88, 0.9);
+}
+
+.subroutine
+{
+	background-color: #271f0c;
+	border-bottom: 5px solid black;
+	text-shadow: 0px -2px black;
+}
+.subroutineafter {
+	background-color: rgba(0, 0, 0, 0.9);
+}
