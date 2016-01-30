@@ -1,0 +1,34 @@
+### Level: JSON Object
+
+# initial blocks placed on the game field
+init: [ 
+	{
+		block: Block object
+		position: x and y coordinates of where the block starts
+	},
+	...
+]
+
+draggables: array of Block objects that can be dragged into the game
+
+scenesbefore: array of Scene objects for before level starts
+
+scenesafter: array of Scene objects for after level ends
+
+
+### Block: JSON Object
+
+	type: "var", "if", "for", "subroutine", "combine",
+
+	value: scalar value (for some types this doesn't make sense)
+
+
+
+
+### Scene: JSON Object
+
+	position: "left" or "right" where the character will appear
+
+	speaker: the string name of a character (and any modifiers) that corresponds directly to their image
+
+	text: array of strings, each element being a text block which should be shown sequentially
