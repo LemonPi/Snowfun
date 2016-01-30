@@ -1,4 +1,61 @@
 {
+	"init":[
+		{
+			"block":{
+				"type":"var",
+				"value":"lenses",
+				"hint":[
+					"This is a variable.",
+					"It's where we can put things of the same type.",
+					"So, this bucket holds only lenses that you need for making glasses!"
+				]
+			},
+			"position":{
+				"x":4,
+				"y":4,
+			}
+		},
+		{
+			"block":{
+				"type":"var",
+				"value":"frames",
+				"hint":[
+					"This is another variable.",
+					"But instead of holding lenses, it holds only frames.",
+				]
+			},
+			"position":{
+				"x":4,
+				"y":8,
+			}
+		},
+		{
+			"block":{
+				"type":"outvar",
+				"value":"sunglasses",
+				"hint":[
+					"This is the variable where we need to put sunglasses in.",
+					"Maybe try combining lenses and frames?"
+				]
+			},
+			"position":{
+				"x":20,
+				"y":6,
+			}
+		}		
+	],
+
+	"draggables":[
+		{
+			"type":"combine",
+			"value":"",
+			"hint":[
+				"You can combine variables by dragging their tail here.",
+				"Pst* I don't actually know how it works, but we don't really need to know."
+			]
+		}
+	],
+
 	"scenesbefore":[
 		{
 			"position":"right",
@@ -52,7 +109,7 @@
 			"position":"right",
 			"speaker":"Frosty_glasses",
 			"text":[
-				"Of course! We can do practically anything "
+				"Of course! We build practically anything in a factory."
 			]
 		}
 	]

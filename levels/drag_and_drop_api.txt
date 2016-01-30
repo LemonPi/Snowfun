@@ -18,12 +18,12 @@ scenesafter: array of Scene objects for after level ends
 
 ### Block: JSON Object
 
-	type: "var", "if", "for", "subroutine", "combine",
+	type: "var", "outvar", "if", "for", "subroutine", "combine",
 
 	value: scalar value (for some types this doesn't make sense)
 
-
-
+	hint: array of strings representing the sequence of instructions telling you how it works
+		if empty then either no hint
 
 ### Scene: JSON Object
 
