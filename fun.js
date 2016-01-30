@@ -46,26 +46,6 @@ $.fn.hitTestObject = function(selector){
 /* end third-party code */
 
 var blocks = {
-	"for": {
-		create: function(state) {
-			var a = $("<div class='block-statement block for'><div class='block-header'>for <div class='block-for-count'/></div><div class='block-for-inner'></div></div>");
-			a.draggable({handle: a.find(".block-header")});
-			a.find(".block-for-inner").droppable({
-				accept: ".block-statement",
-				drop: function (event, ui){
-					ui.draggable.remove().css("position", "").appendTo(this);
-				}
-			});
-			a.find(".block-for-count").droppable({
-				accept: ".block var",
-				drop: function (event, ui){
-					blocks["var"].create(blocks["var"].tostate(ui.draggable)).appendTo(this).draggable({handle: ui.draggable.find(".block-header")});
-					ui.draggable.remove();
-				}
-			});
-			return a;
-		}
-	},
 	"var": {
 		create: function(state) {
 			var a = $("<div><a class='block var'/><a class='block-nodule blockafter varafter'/></div>").draggable({
@@ -97,6 +77,26 @@ var blocks = {
 			a.find(".block-text").text(state.val);
 			return a;
 		},
+	},
+	"if": {
+		create: function(state) {
+			var a = $("<div><a class='block if'/><a class='block-nodule blockafter varafter'/></div>").draggable({
+				drag: function(ev, ui) {
+					drawNoduleLine($(this).find(".block-nodule"));
+				}
+			});
+			return a;
+		}
+	},
+	"for": {
+		create: function(state) {
+			var a = $("<div><a class='block for'/><a class='block-nodule blockafter varafter'/></div>").draggable({
+				drag: function(ev, ui) {
+					drawNoduleLine($(this).find(".block-nodule"));
+				}
+			});
+			return a;
+		}
 	},
 };
 
@@ -137,8 +137,12 @@ function makeBlock(name, state) {
 
 		// alert(state.hint);
 	});
-	if (state && state.value) a.find(".block").text(state.value);
+	if (state && state.output) {
+		a.find(".block").text("If: " + state.output);
+		a.attr("data-output", state.output);
+	} else if (state && state.value) a.find(".block").text(state.value);
 	if (state && state.hint) a.attr("data-hint", JSON.stringify(state.hint));
+	if (state && state.input) a.attr("data-input", state.input);
 	a.uniqueId();
 	return a;
 }
@@ -197,6 +201,20 @@ function getVal(nodules, startNode, already) {
 		if (intersects.length != 1) return "FAIL-outvar";
 		return getVal(nodules, intersects[0], already);
 	}
+	if (nodeType == "if") {
+		if (intersects.length != 1) return "FAIL-if";
+		var first = getVal(nodules, intersects[0], already);
+		if (first != startNode.attr("data-input")) return "FAIL-if-val";
+		return startNode.attr("data-output");
+	}
+	if (nodeType == "for") {
+		if (intersects.length != 2) return "FAIL-for";
+		var first = getVal(nodules, intersects[0], already);
+		var second = getVal(nodules, intersects[1], already);
+		if(first == "water" && second == "carrot_seeds") return "carrots";
+		if(first == "carrot_seeds" && second == "water") return "carrots";
+		return "FAIL";
+	}
 	return "FAIL-unknown";
 }
 
@@ -210,7 +228,7 @@ function createBlocks() {
 
 	for (var i = 0; i < curLevel.draggables.length; i++) {
 		var dragged = makeBlock(curLevel.draggables[i].type, curLevel.draggables[i]);
-		dragged.css("right", "0px")
+		dragged.css("right", "0px").css("top", i*50+"px");
 		blockContainer.append(dragged);
 	}
 }
