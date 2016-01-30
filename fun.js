@@ -103,6 +103,22 @@ var blocks = {
 
 var blockContainer;
 
+var curText = null;
+var hintPopup = false;
+
+$(document).on('mousedown',function(){
+	console.log("hint popup: " + hintPopup);
+	if (hintPopup) {
+		if (curText && curText.length > 0) {
+			$("#bubbler").text(curText.shift());
+		}
+		else {
+			$("#bubbler").hide();
+			hintPopup = false;
+		}
+	}
+});
+
 function makeBlock(name, state) {
 	var a = blocks[name].create(state);
 	a.css("position", "absolute");
@@ -113,6 +129,14 @@ function makeBlock(name, state) {
 			var b = $(this);
 			drawNoduleLine(b);
 		}
+	});
+	a.click(function(){
+		curText = state.hint;
+		$("#bubbler").text(curText.shift());
+		$("#bubbler").show();
+		hintPopup = true;
+
+		// alert(state.hint);
 	});
 	if (state && state.value) a.find(".block").text(state.value);
 	if (state && state.hint) a.attr("data-hint", JSON.stringify(state.hint));

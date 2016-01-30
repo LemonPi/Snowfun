@@ -50,9 +50,20 @@ function advanceScene() {
 function advanceText() {
 	++currentTextIndex;
 	if (currentTextIndex >= currentScenes[currentSceneIndex].text.length) {
+		$("#bubbler").hide();
+		$("#bubble").hide();
 		return false;
 	}
-	$(".scene-text").text(currentScenes[currentSceneIndex].text[currentTextIndex]);
+	if (currentScenes[currentSceneIndex].position === "left") {
+		$("#bubble").text(currentScenes[currentSceneIndex].text[currentTextIndex]);
+		$("#bubble").show();
+		$("#bubbler").hide();
+	}
+	else {
+		$("#bubbler").text(currentScenes[currentSceneIndex].text[currentTextIndex]);
+		$("#bubbler").show();
+		$("#bubble").hide();
+	}
 	return true;
 }
 
