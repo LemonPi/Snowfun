@@ -5,12 +5,12 @@
 				"type":"var",
 				"value":"snowman_core",
 				"hint":[
-					"The mysterious essence of a snowman.",
+					"The mysterious essence of a snowman."
 				]
 			},
 			"position":{
 				"x":4,
-				"y":4,
+				"y":4
 			}
 		},
 		{
@@ -23,7 +23,7 @@
 			},
 			"position":{
 				"x":20,
-				"y":4,
+				"y":4
 			}
 		}		
 	],
@@ -88,21 +88,21 @@
 			"position":"right",
 			"speaker":"Frosty_sad",
 			"text":[
-				"Gee, it sure is lonely with just the two of us in the town...",
+				"Gee, it sure is lonely with just the two of us in the town..."
 			]
 		},
 		{
 			"position":"left",
 			"speaker":"Chilly",
 			"text":[
-				"Yeah.",
+				"Yeah."
 			]
 		},
 		{
 			"position":"right",
 			"speaker":"Frosty",
 			"text":[
-				"Oh I know, why don't we make some other snowmen!",
+				"Oh I know, why don't we make some other snowmen!"
 			]
 		},
 		{
@@ -111,7 +111,7 @@
 			"text":[
 				"Yeah, let's go build a snowman!"
 			]
-		},
+		}
 	],
 
 	"scenesafter":[
@@ -120,14 +120,14 @@
 			"speaker":"Chilly",
 			"text":[
 				"Wow wow!",
-				"Look at all of our new friends.",
+				"Look at all of our new friends."
 			]
 		},
 		{
 			"position":"right",
 			"speaker":"Frosty",
 			"text":[
-				"Yes, we can definitely call this a town now!",
+				"Yes, we can definitely call this a town now!"
 			]
 		}
 	]

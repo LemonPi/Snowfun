@@ -12,7 +12,7 @@
 			},
 			"position":{
 				"x":4,
-				"y":4,
+				"y":4
 			}
 		},
 		{
@@ -21,12 +21,12 @@
 				"value":"frames",
 				"hint":[
 					"This is another variable.",
-					"But instead of holding lenses, it holds only frames.",
+					"But instead of holding lenses, it holds only frames."
 				]
 			},
 			"position":{
 				"x":4,
-				"y":8,
+				"y":8
 			}
 		},
 		{
@@ -40,7 +40,7 @@
 			},
 			"position":{
 				"x":20,
-				"y":6,
+				"y":6
 			}
 		}		
 	],

@@ -12,7 +12,7 @@
 			},
 			"position":{
 				"x":4,
-				"y":4,
+				"y":4
 			}
 		},
 		{
@@ -26,7 +26,7 @@
 			},
 			"position":{
 				"x":20,
-				"y":4,
+				"y":4
 			}
 		}		
 	],
@@ -75,7 +75,7 @@
 			"speaker":"Chilly_coatless",
 			"text":[
 				"Mhm, definitely.",
-				"It makes me just want to roll around in the snow...",
+				"It makes me just want to roll around in the snow..."
 			]
 		},
 		{
@@ -98,7 +98,7 @@
 			"position":"right",
 			"speaker":"Frosty_coatless",
 			"text":[
-				"Good thinking Chilly!",
+				"Good thinking Chilly!"
 			]
 		}
 	],

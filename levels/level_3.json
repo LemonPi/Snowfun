@@ -6,12 +6,12 @@
 				"value":"carrot_seeds",
 				"hint":[
 					"It might not look much now, but these will grow into large carrots!",
-					"They just need some tender loving care.",
+					"They just need some tender loving care."
 				]
 			},
 			"position":{
 				"x":4,
-				"y":4,
+				"y":4
 			}
 		},
 		{
@@ -25,7 +25,7 @@
 			},
 			"position":{
 				"x":20,
-				"y":4,
+				"y":4
 			}
 		}		
 	],
@@ -50,7 +50,7 @@
 			"value":"snow",
 			"hint":[
 				"There's lot of snow on the ground.",
-				"What happens to snow under the sun?",
+				"What happens to snow under the sun?"
 			]
 		},
 		{
@@ -68,7 +68,7 @@
 			"position":"right",
 			"speaker":"Frosty_noseless_panic",
 			"text":[
-				"Ahhhhh!",
+				"Ahhhhh!"
 			]
 		},
 		{
@@ -76,7 +76,7 @@
 			"speaker":"Chilly",
 			"text":[
 				"What - what is it?",
-				"Oh...",
+				"Oh..."
 			]
 		},
 		{
@@ -84,7 +84,7 @@
 			"speaker":"Frosty_noseless_panic",
 			"text":[
 				"Help, some rabbit took my nose!",
-				"Now I can't smell all the Spring flowers.",
+				"Now I can't smell all the Spring flowers."
 			]
 		},
 		{
@@ -99,7 +99,7 @@
 			"position":"right",
 			"speaker":"Frosty_noseless",
 			"text":[
-				"Well let's get to it!",
+				"Well let's get to it!"
 			]
 		}
 	],
@@ -109,7 +109,7 @@
 			"position":"left",
 			"speaker":"Chilly",
 			"text":[
-				"So, how's your new nose settling in?",
+				"So, how's your new nose settling in?"
 			]
 		},
 		{
