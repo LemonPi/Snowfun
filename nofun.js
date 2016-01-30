@@ -75,6 +75,7 @@ function endScene() {
 
 function startScene(sceneName) {
 	$(".scene-stage").show();
+	$(".block-container").hide();
 	state = DIALOGUE;
 	currentScenes = curLevel[sceneName];
 	currentSceneIndex = -1;
@@ -90,16 +91,37 @@ function loadLevel(levelIndex) {
 	$.get("levels/level_" + levelIndex + ".json", null, initLevel, "text");
 }
 
+var curLevelIndex = 1;
+
 function initUi() {
+	setPassed(false);
 	$(document).on("mousedown", mouseDownHandler);
-	loadLevel(1);
+	loadLevel(curLevelIndex);
 }
 
 function initLevel(json) {
 	console.log(initLevel);
 	curLevel = JSON.parse(json);
+	endSceneCallback = function(e) {
+		$(".block-container").show();
+	}
 	startScene("scenesbefore");
 	createBlocks();
+	setPassed(false);
+}
+
+function passedLevel() {
+	$(".line").remove();
+	endSceneCallback = function(e) {
+		curLevelIndex++;
+		if (curLevelIndex > 4) {
+			alert("You've completed the challenge!");
+			return;
+		}
+		loadLevel(curLevelIndex);
+	};
+	startScene("scenesafter");
+	setPassed(false);
 }
 
 $(document).ready(initUi);

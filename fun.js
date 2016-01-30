@@ -25,7 +25,6 @@ function createLine(x1,y1, x2,y2) {
 /* http://upshots.org/javascript/jquery-hittestobject */
 
 $.fn.hitTestObject = function(selector){
-		console.log("hit test: ", this, selector);
         var compares = $(selector);
         var l = this.size();
         var m = compares.size();
@@ -159,8 +158,8 @@ function checkSolution() {
 }
 
 function setPassed(passed) {
-	//$(".passed").text(passed? "Yay!", "");
-	console.log(passed);
+	if (passed) $(".passed").show();
+	else $(".passed").hide();
 }
 
 function getVal(nodules, startNode, already) {
@@ -169,7 +168,6 @@ function getVal(nodules, startNode, already) {
 	}
 	already.push(startNode);
 	var nodeType = startNode.attr("data-blocktype");
-	console.log(nodules, startNode, already, nodeType);
 	if (nodeType == "var" || nodeType == "subroutine") {
 		return startNode.find(".block").text();
 	}
@@ -183,12 +181,11 @@ function getVal(nodules, startNode, already) {
 			intersects.push(parent);
 		}
 	}
-	console.log(intersects);
+	//console.log(intersects);
 	if (nodeType == "combine") {
 		if (intersects.length != 2) return "FAIL-combine-length";
 		var first = getVal(nodules, intersects[0], already);
 		var second = getVal(nodules, intersects[1], already);
-		console.log("combine", first, second);
 		var combo = combinations[first + ":" + second];
 		if (combo) return combo;
 		combo = combinations[second + ":" + first];
@@ -219,6 +216,11 @@ function createBlocks() {
 
 $(document).ready(function(e) {
 	blockContainer = $(".block-container");
+});
+
+$(document).on("mousemove", function(e) {
+	if (e.which == 0) return;
+	checkSolution();
 });
 
 /*
