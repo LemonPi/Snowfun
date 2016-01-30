@@ -1,0 +1,59 @@
+{
+	"scenesbefore":[
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Hey Chilly, what do you say we settle a town here?"
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Well it's not a bad spot.",
+				"There's a lot of snow around, hills to roll down...",
+				"But it's so bright here without trees!"
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Ah I know! We'll make sunglasses!"
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly_hesitant",
+			"text":[
+				"Er, but what are we going to make them from?"
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Our friends from Lensville and Frametown should help with that.",
+				"With their ingredients, we can make our first factory!"
+			]
+		}
+	],
+
+	"scenesafter":[
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Wow, that was a lot easier than I expected..."
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty_glasses",
+			"text":[
+				"Of course! We can do practically anything "
+			]
+		}
+	]
+}
