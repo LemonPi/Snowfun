@@ -22,6 +22,28 @@ function createLine(x1,y1, x2,y2) {
     return line;
 }
 
+/* http://upshots.org/javascript/jquery-hittestobject */
+
+$.fn.hitTestObject = function(selector){
+		console.log("hit test: ", this, selector);
+        var compares = $(selector);
+        var l = this.size();
+        var m = compares.size();
+        for(var i = 0; i < l; i++){
+           var bounds = this.get(i).getBoundingClientRect();
+            for(var j = 0; j < m; j++){
+               var compare = compares.get(j).getBoundingClientRect();
+               if(!(bounds.right < compare.left ||
+                    bounds.left > compare.right ||
+                    bounds.bottom < compare.top ||
+                    bounds.top > compare.bottom)){
+						return true;   
+                }
+            }
+        }
+		return false;
+	};
+
 /* end third-party code */
 
 var blocks = {
@@ -60,7 +82,7 @@ var blocks = {
 	},
 	"combine": {
 		create: function(state) {
-			var a = $('<div class="block combine"><div class="block-innodule"/><div class="block-innodule"/><div class="block-innodule"/>').draggable();
+			var a = $('<div><a class="block combine">Combine</a><a class="block-nodule blockafter combineafter"/></div>').draggable();
 			return a;
 		}
 	},
@@ -85,7 +107,7 @@ function makeBlock(name, state) {
 	var a = blocks[name].create(state);
 	a.css("position", "absolute");
 	a.addClass("holder");
-	console.log(state);
+	a.attr("data-blocktype", name);
 	a.find(".block-nodule").draggable({
 		drag: function (e, ui) {
 			var b = $(this);
@@ -105,7 +127,54 @@ function drawNoduleLine(b) {
 }
 
 function checkSolution() {
-	
+	var terminating = $(".outvar").parent();
+	var a = getVal($(".nodules"), terminating, []);
+	console.log(a);
+	var passed = a == terminating.find(".block").text();
+	setPassed(passed);
+}
+
+function setPassed(passed) {
+	//$(".passed").text(passed? "Yay!", "");
+	console.log(passed);
+}
+
+function getVal(nodules, startNode, already) {
+	if (already.indexOf(startNode) != -1) {
+		return "FAIL-loop";
+	}
+	already.push(startNode);
+	var nodeType = startNode.attr("data-blocktype");
+	console.log(nodules, startNode, already, nodeType);
+	if (nodeType == "var" || nodeType == "subroutine") {
+		return startNode.find("block").text();
+	}
+	var intersects = [];
+	// find all nodules on this node
+	for (var i = 0; i < nodules.length; i++) {
+		if ($(nodules[i]).hitTestObject(startNode)) {
+			// find the nodule's parent
+			var parent = $(nodules[i]).parent();
+			if (parent.attr("id") == startNode.attr("id")) continue;
+			intersects.push(parent);
+		}
+	}
+	console.log(intersects);
+	if (nodeType == "combine") {
+		if (intersects.length != 2) return "FAIL";
+		var first = getVal(nodules, intersects[0], already);
+		var second = getVal(nodules, intersects[1], already);
+		var combo = combinations[first + ":" + second];
+		if (combo) return combo;
+		combo = combinations[second + ":" + first];
+		if (combo) return combo;
+		return "FAIL-combine";
+	}
+	if (nodeType == "outvar") {
+		if (intersects.length != 1) return "FAIL-outvar";
+		return getVal(nodules, intersects[0], already);
+	}
+	return "FAIL-unknown";
 }
 
 function createBlocks() {
