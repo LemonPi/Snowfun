@@ -98,6 +98,16 @@ var blocks = {
 			return a;
 		},
 	},
+	"if": {
+		create: function(state) {
+			var a = $("<div><a class='block if'/><a class='block-nodule blockafter varafter'/></div>").draggable({
+				drag: function(ev, ui) {
+					drawNoduleLine($(this).find(".block-nodule"));
+				}
+			});
+			return a;
+		}
+	},
 };
 
 var blockContainer;
@@ -137,8 +147,12 @@ function makeBlock(name, state) {
 
 		// alert(state.hint);
 	});
-	if (state && state.value) a.find(".block").text(state.value);
+	if (state && state.output) {
+		a.find(".block").text(state.output);
+		a.attr("data-output", state.output);
+	} else if (state && state.value) a.find(".block").text(state.value);
 	if (state && state.hint) a.attr("data-hint", JSON.stringify(state.hint));
+	if (state && state.input) a.attr("data-input", state.output);
 	a.uniqueId();
 	return a;
 }
@@ -196,6 +210,12 @@ function getVal(nodules, startNode, already) {
 		if (intersects.length != 1) return "FAIL-outvar";
 		return getVal(nodules, intersects[0], already);
 	}
+	if (nodeType == "if") {
+		if (intersects.length != 1) return "FAIL-if";
+		var first = getVal(nodules, intersects[0], already);
+		if (first != startNode.attr("data-input")) return "FAIL-if-val";
+		return startNode.attr("data-output");
+	}
 	return "FAIL-unknown";
 }
 
@@ -209,7 +229,7 @@ function createBlocks() {
 
 	for (var i = 0; i < curLevel.draggables.length; i++) {
 		var dragged = makeBlock(curLevel.draggables[i].type, curLevel.draggables[i]);
-		dragged.css("right", "0px")
+		dragged.css("right", "0px").css("top", i*50+"px");
 		blockContainer.append(dragged);
 	}
 }
