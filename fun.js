@@ -152,7 +152,7 @@ function drawNoduleLine(b) {
 
 function checkSolution() {
 	var terminating = $(".outvar").parent();
-	var a = getVal($(".nodules"), terminating, []);
+	var a = getVal($(".block-nodule"), terminating, []);
 	console.log(a);
 	var passed = a == terminating.find(".block").text();
 	setPassed(passed);
@@ -171,7 +171,7 @@ function getVal(nodules, startNode, already) {
 	var nodeType = startNode.attr("data-blocktype");
 	console.log(nodules, startNode, already, nodeType);
 	if (nodeType == "var" || nodeType == "subroutine") {
-		return startNode.find("block").text();
+		return startNode.find(".block").text();
 	}
 	var intersects = [];
 	// find all nodules on this node
@@ -185,9 +185,10 @@ function getVal(nodules, startNode, already) {
 	}
 	console.log(intersects);
 	if (nodeType == "combine") {
-		if (intersects.length != 2) return "FAIL";
+		if (intersects.length != 2) return "FAIL-combine-length";
 		var first = getVal(nodules, intersects[0], already);
 		var second = getVal(nodules, intersects[1], already);
+		console.log("combine", first, second);
 		var combo = combinations[first + ":" + second];
 		if (combo) return combo;
 		combo = combinations[second + ":" + first];
