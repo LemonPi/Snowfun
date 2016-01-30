@@ -1,0 +1,14 @@
+CSS line drawing: http://www.monkeyandcrow.com/blog/drawing_lines_with_css3/
+
+jQuery Overlap:
+
+/*
+ * jQuery Overlap Plugin 0.2
+ * https://github.com/leandrobrunner/jQuery-Overlap
+ *
+ * Copyright (c), Leandro Brunner
+ * leandrobrunner@yahoo.com.ar
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
