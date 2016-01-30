@@ -12,6 +12,18 @@ function advanceDialogue() {
 	advanceScene();
 }
 
+var combinations = {
+	"frames:lenses":"sunglasses",
+	"rocks:snow":"malformed coats",
+	"nice rocks:snow":"snowcoats",
+	"sun:snow":"water",
+	"water:carrot_seeds":"carrots",
+	"snow:carrot_seeds":"cold carrot seeds",
+	"snowman_core:snowman_body":"snowman",
+	"snow:snowcoats":"snowman body without nose",
+	"snowman body without nose:carrots":"snowman_body"
+}
+
 var imgType = ".png";
 var imgFolder = "img/";
 
