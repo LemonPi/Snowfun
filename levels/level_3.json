@@ -39,7 +39,7 @@
 		},
 		{
 			"type":"for",
-			"value":"",
+			"value":"until carrot is tall",
 			"hint":[
 				"Some things you need to more than once.",
 				"If you need to do something for 100 times, try a for block!"
