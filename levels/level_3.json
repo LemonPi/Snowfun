@@ -1,0 +1,124 @@
+{
+	"init":[
+		{
+			"block":{
+				"type":"var",
+				"value":"carrot_seeds",
+				"hint":[
+					"It might not look much now, but these will grow into large carrots!",
+					"They just need some tender loving care.",
+				]
+			},
+			"position":{
+				"x":4,
+				"y":4,
+			}
+		},
+		{
+			"block":{
+				"type":"outvar",
+				"value":"carrots",
+				"hint":[
+					"These carrots are the fruit of much labour and love!",
+					"Although, they are actually vegetables."
+				]
+			},
+			"position":{
+				"x":20,
+				"y":4,
+			}
+		}		
+	],
+
+	"draggables":[
+		{
+			"type":"combine",
+			"value":"",
+			"hint":[
+			]
+		},
+		{
+			"type":"for",
+			"value":"",
+			"hint":[
+				"Some things you need to more than once.",
+				"If you need to do something for 100 times, try a for block!"
+			]
+		},
+		{
+			"type":"var",
+			"value":"snow",
+			"hint":[
+				"There's lot of snow on the ground.",
+				"What happens to snow under the sun?",
+			]
+		},
+		{
+			"type":"var",
+			"value":"sun",
+			"hint":[
+				"The sun's really bright around here.",
+				"It can probably melt many things."
+			]
+		}
+	],
+
+	"scenesbefore":[
+		{
+			"position":"right",
+			"speaker":"Frosty_noseless_panic",
+			"text":[
+				"Ahhhhh!",
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"What - what is it?",
+				"Oh...",
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty_noseless_panic",
+			"text":[
+				"Help, some rabbit took my nose!",
+				"Now I can't smell all the Spring flowers.",
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"We recently traded some of our sunglasses for carrot seeds.",
+				"Maybe we can grow your nose back?"
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty_noseless",
+			"text":[
+				"Well let's get to it!",
+			]
+		}
+	],
+
+	"scenesafter":[
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"So, how's your new nose settling in?",
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Quite well actually!",
+				"Well at least now we don't have to worry about losing our noses anymore."
+			]
+		}
+	]
+}

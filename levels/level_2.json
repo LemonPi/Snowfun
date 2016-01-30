@@ -1,0 +1,123 @@
+{
+	"init":[
+		{
+			"block":{
+				"type":"var",
+				"value":"rocks",
+				"hint":[
+					"Hmmm...",
+					"I'm not sure all of these rocks are suitable for making buttons.",
+					"Some of them are the size of my head and some are way too sharp!"
+				]
+			},
+			"position":{
+				"x":4,
+				"y":4,
+			}
+		},
+		{
+			"block":{
+				"type":"outvar",
+				"value":"snowcoats",
+				"hint":[
+					"Help Frosty and Chilly make some fancy snowcoats to keep them cool!",
+					"They look to be made of rocks and snow."
+				]
+			},
+			"position":{
+				"x":20,
+				"y":4,
+			}
+		}		
+	],
+
+	"draggables":[
+		{
+			"type":"combine",
+			"value":"",
+			"hint":[
+				"Sometimes things don't make a great combination.",
+				"In those cases, maybe try changing the ingredients?"
+			]
+		},
+		{
+			"type":"if",
+			"value":"",
+			"input":"rocks",
+			"output":"nice rocks",
+			"hint":[
+				"Maybe we can keep just the good rocks and throw away the bad rocks.",
+				"So, if the rock is good, we pass it on, else we throw it away.",
+				"Try connecting rocks to this block!"
+			]
+		},
+		{
+			"type":"var",
+			"value":"snow",
+			"hint":[
+				"There's lot of snow on the ground.",
+				"But leaving it there won't be useful.",
+				"Let's collect them all into a variable!"
+			]
+		}
+	],
+
+	"scenesbefore":[
+		{
+			"position":"right",
+			"speaker":"Frosty_coatless",
+			"text":[
+				"Hey Chilly, isn't it a bit warm here?"
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly_coatless",
+			"text":[
+				"Mhm, definitely.",
+				"It makes me just want to roll around in the snow...",
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty_coatless",
+			"text":[
+				"Ah that's brilliant Chilly!",
+				"We'll make snow jackets.",
+				"Now all we need are some buttons to fasten them on..."
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly_coatless",
+			"text":[
+				"What about those rocks lying on the ground?"
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty_coatless",
+			"text":[
+				"Good thinking Chilly!",
+			]
+		}
+	],
+
+	"scenesafter":[
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Mmm, these coats sure are comfortable.",
+				"Fluffy and cool, fashionable too!"
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Well, we used only the best of materials after all!"
+			]
+		}
+	]
+}

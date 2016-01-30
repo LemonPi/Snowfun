@@ -1,0 +1,134 @@
+{
+	"init":[
+		{
+			"block":{
+				"type":"var",
+				"value":"snowman_core",
+				"hint":[
+					"The mysterious essence of a snowman.",
+				]
+			},
+			"position":{
+				"x":4,
+				"y":4,
+			}
+		},
+		{
+			"block":{
+				"type":"outvar",
+				"value":"snowman",
+				"hint":[
+					"A true living and moving snowman!"
+				]
+			},
+			"position":{
+				"x":20,
+				"y":4,
+			}
+		}		
+	],
+
+	"draggables":[
+		{
+			"type":"combine",
+			"value":"",
+			"hint":[
+			]
+		},
+		{
+			"type":"combine",
+			"value":"",
+			"hint":[
+			]
+		},		
+		{
+			"type":"var",
+			"value":"carrot_seeds",
+			"hint":[
+			]	
+		},
+		{
+			"type":"var",
+			"value":"snow",
+			"hint":[
+			]
+		},
+		{
+			"type":"var",
+			"value":"snow",
+			"hint":[
+			]
+		},					
+		{
+			"type":"subroutine",
+			"value":"carrots",
+			"input":"carrot_seeds",
+			"hint":[
+				"We know how to make carrots from before.",
+				"Let's build more noses the same way!",
+				"We call this a subroutine.",
+				"All we need to do is connect some carrot seed to it.",
+				"No need for us to go through all the steps of how to do it!"
+			]
+		},
+		{
+			"type":"subroutine",
+			"value":"snowcoats",
+			"input":"rocks",
+			"hint":[
+				"We also know how to make snowcoats.",
+				"The only thing we needed to make them was rocks.",
+				"Just feed rocks to our previous subroutine and we'll get snowcoats!"
+			]
+		}
+	],
+
+	"scenesbefore":[
+		{
+			"position":"right",
+			"speaker":"Frosty_sad",
+			"text":[
+				"Gee, it sure is lonely with just the two of us in the town...",
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Yeah.",
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Oh I know, why don't we make some other snowmen!",
+			]
+		},
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Yeah, let's go build a snowman!"
+			]
+		},
+	],
+
+	"scenesafter":[
+		{
+			"position":"left",
+			"speaker":"Chilly",
+			"text":[
+				"Wow wow!",
+				"Look at all of our new friends.",
+			]
+		},
+		{
+			"position":"right",
+			"speaker":"Frosty",
+			"text":[
+				"Yes, we can definitely call this a town now!",
+			]
+		}
+	]
+}

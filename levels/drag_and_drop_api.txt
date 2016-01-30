@@ -25,6 +25,9 @@ scenesafter: array of Scene objects for after level ends
 	hint: array of strings representing the sequence of instructions telling you how it works
 		if empty then either no hint
 
+	for "if" type, will have input and output which are strings
+	for "subrountine" type, will have input with its value as the output; both are strings
+
 ### Scene: JSON Object
 
 	position: "left" or "right" where the character will appear
