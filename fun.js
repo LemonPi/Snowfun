@@ -158,8 +158,9 @@ function checkSolution() {
 }
 
 function setPassed(passed) {
-	if (passed) $(".passed").show();
-	else $(".passed").hide();
+
+	if (passed) {$("#bubble").show(); $("#bubble").html("<p>You did it!</p><button class='block small' onClick='passedLevel()'>Continue to next level</button>" );} //$(".passed").show();
+	else $("#bubble").hide();
 }
 
 function getVal(nodules, startNode, already) {
