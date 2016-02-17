@@ -2,26 +2,6 @@
 
 /* Third party code */
 
-/* CSS line drawing: http://www.monkeyandcrow.com/blog/drawing_lines_with_css3/ */
-
-function createLine(x1,y1, x2,y2) {
-    var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
-  var angle  = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-  var transform = 'rotate('+angle+'deg)';
-
-    var line = $('<div>')
-        .appendTo('body')
-        .addClass('line')
-        .css({
-          'position': 'absolute',
-          'transform': transform
-        })
-        .width(length)
-        .offset({left: Math.min(x1, x2), top: Math.min(y1, y2)});
-
-    return line;
-}
-
 /* http://upshots.org/javascript/jquery-hittestobject */
 
 $.fn.hitTestObject = function(selector){
@@ -101,6 +81,8 @@ var blocks = {
 };
 
 var blockContainer;
+var lineOverlay;
+var noduleRadius;
 
 var curText = null;
 var hintPopup = false;
@@ -148,9 +130,19 @@ function makeBlock(name, state) {
 }
 
 function drawNoduleLine(b) {
-	$("[data-parent=\"" + b.parent().attr("id") + "\"]").remove();
-	var l = createLine(b.parent().offset().left + b.parent().width()*0.5, b.parent().offset().top + (0.5*b.parent().height()), b.offset().left, b.offset().top + b.outerHeight()*0.5);
-	l.attr("data-parent", b.parent().attr("id"));
+	if (!noduleRadius) {
+		var nodule = $(".block-nodule");
+		if (nodule.length) {
+			noduleRadius = $(nodule[0]).outerWidth()/2;
+		}		
+	}
+	console.log(noduleRadius);
+
+	var l = createLine(b.parent().offset().left, 
+		b.parent().offset().top + (0.5*b.parent().height()) - 4, 
+		b.offset().left + noduleRadius - 6, 
+		b.offset().top + noduleRadius - 4,
+		b.parent().attr("id")+"-line");
 }
 
 function checkSolution() {
@@ -233,8 +225,34 @@ function createBlocks() {
 	}
 }
 
+function createLine(x1,y1, x2,y2, existingLineID) {
+	// draw manhattan lines
+
+  	x1 = Math.round(x1);
+  	x2 = Math.round(x2);
+  	y1 = Math.round(y1);
+  	y2 = Math.round(y2);
+
+
+   var line = $("#"+existingLineID);
+   if (line.length) {
+   		line.attr("points",[x1,",",y1, " ", x2,",",y1, " ", x2,",",y2].join(""));
+   }
+   else {
+	    line = $(document.createElementNS("http://www.w3.org/2000/svg","polyline"))
+	        .appendTo(lineOverlay)
+	        .attr("class", "line")
+	        .attr("id", existingLineID)
+	        .attr("stroke-dasharray", "10,10")
+	        .attr("points",[x1,",",y1, " ", x2,",",y1, " ", x2,",",y2].join(""));
+   }
+
+    return line;
+}
+
 $(document).ready(function(e) {
 	blockContainer = $(".block-container");
+	lineOverlay = $("#lineoverlay");
 });
 
 $(document).on("mousemove", function(e) {

@@ -40,6 +40,7 @@
     color: #FFF;
     text-decoration: none;  
     text-shadow: 0px -2px #2980B9;
+    z-index:100;
     /* Animation */
     /*transition: all 0.1s;
     -webkit-transition: all 0.1s;*/
@@ -170,4 +171,8 @@
   /* reduce the damage in FF3.0 */
   display:block;
   width:0;
+}
+
+.small {
+	font-size:14px;
 }
