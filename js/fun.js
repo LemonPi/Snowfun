@@ -23,6 +23,8 @@ $.fn.hitTestObject = function(selector) {
 
 /* end third-party code */
 
+/** unique block types, each should have a create(state) function 
+	create(state) creates and returns a block of that type */
 var blocks = {
     'var': {
         create: function(state) {
@@ -57,7 +59,8 @@ var blocks = {
     },
     'outvar': {
         create: function(state) {
-            var a = $('<div><a class=\'block outvar\'/></div>').draggable();
+			// outvariable will not be draggable
+            var a = $('<div><a class=\'block outvar\'/></div>');
             a.find('.block-text').text(state.val);
             return a;
         },
