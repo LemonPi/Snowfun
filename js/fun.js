@@ -57,7 +57,7 @@ var blocks = {
     },
     'outvar': {
         create: function(state) {
-            var a = $('<div><a class=\'block outvar\'/></div>').draggable();
+            var a = $('<div><a class=\'block outvar\'/></div>');
             a.find('.block-text').text(state.val);
             return a;
         },
