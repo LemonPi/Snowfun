@@ -1,0 +1,215 @@
+---
+layout: default
+title: Snowfun - A fun way to learn functional programming 
+permalink: /projects/snowfun/index.html
+group: projects
+---
+
+<div class="toc">  
+ <a class="toc-link toch2" href="#team">The Team</a>  
+ <a class="toc-link toch2" href="#stakeholders">Stakeholders</a>  
+ <a class="toc-link toch2" href="#problem">Problem</a>  
+ <a class="toc-link toch3" href="#problem#reframe">Reframe</a>  
+ <a class="toc-link toch2" href="#solution">Solution</a>  
+ <a class="toc-link toch3" href="#solution#extensibility">Extensibility</a>  
+ <a class="toc-link toch3" href="#solution#simplicity">Simplicity</a>  
+ <a class="toc-link toch2" href="#challenges">Challenges</a>  
+ <a class="toc-link toch2" href="#reflection">Reflection</a>  
+ <a class="toc-link toch2" href="#trivia">Trivia</a>  
+ <a class="toc-link toch2" href="#gains">Gains from Experience</a> 
+ <p class="toc-caption"></p> 
+ <p class="toc-toggle">toggle TOC (ctrl + &#8660;)</p> 
+</div>
+
+<div class="block">
+<div class="text-block">
+<p>
+	This is our first place entry to the <a href="http://oec2016.io/">2016 Ontario Engineering Competition 
+	(OEC)</a>, Programming category. In teams of up to 4, we're given 6-7 hours to address a realistic problem by 1) creating a software solution and 2) preparing an oral presentation to demonstrate the solution. 
+	See the <a href="/res/projects/snowfun/rules.pdf">rules</a> and our <a href="/res/projects/snowfun/schedule.pdf">schedule</a>
+</p>
+
+<p>
+	This year, the problem was to create a game to teach 5-7 year olds programming.
+</p>
+<p> 
+	My teammate and I made a drag-and-drop game where you connect blocks together to transform data.
+	You pass each level by creating the required output.
+</p>
+<p>
+	A playable demo is <a href="nofun.html">here</a>; it's also embedded further down the page. It's fully
+	touch compatible. Minor bug fixes are in this version compared to the one we presented with.
+	The powerpoint accompanying our oral presentation can be found <a href="/res/projects/snowfun/presentation.pptx">here</a>
+</p>
+</div>
+
+<h3>Tips</h3>
+<ul> 
+ <li>get hints on how to use each block by clicking on them</li>
+ <li>the output block always has no connectors</li>
+</ul>
+
+
+<iframe width="100%" height="800" src="nofun.html" frameborder="0" allowfullscreen></iframe>
+
+<h2 class="anchor">The Team <a class="anchor-link" title="permalink to section" href="#team" name="team">&para;</a></h2>
+<!--- new section -->
+
+<ul>
+	<li>Johnson Zhong - API design, level design, graphics
+	<li><a href="http://zhuoweizhang.net/">Zhuowei Zhang</a> - engine implementation, infrastructure integration
+</ul>
+
+
+<div class="frames">
+<a href="/res/projects/snowfun/team.jpg">
+<img src="/res/projects/snowfun/team_thumb.jpg">
+</a>
+<p>Back in Toronto</p>
+</div>
+
+<h2 class="anchor">Stakeholders <a class="anchor-link" title="permalink to section" href="#stakeholders" name="stakeholders">&para;</a></h2>
+<!--- new section -->
+<h3>Kids</h3>
+<ul>
+<li>develop transferable skills</li>
+<li>be entertained</li>
+<li>grow confidence</li>
+</ul>
+
+<h3>Parents</h3>
+<ul>
+<li>monitor kids' progress</li>
+<li>help their child without being able to program themselves</li>
+<li>spend little money</li>
+</ul>
+
+<h3>Teachers (apologies for the cynicism)</h3>
+<ul>
+<li>avoid additional work</li>
+<li>avoid retraining</li>
+</ul>
+
+
+<h2 class="anchor">Problem <a class="anchor-link" title="permalink to section" href="#problem" name="problem">&para;</a></h2>
+<!--- new section -->
+
+<div class="text-block">
+<p>
+	Why is programming difficult to learn? The biggest factor is that there are many prerequisite
+	skills to creating useful programs: typing, math, and dealing with abstract objects, to name the primary ones.
+</p>
+
+<p>
+	Syntax complicates the challenge. Not only do beginners have to learn the concepts,
+	they also have to wrestle with the grammar and vocabulary of a new language. Most syntaxes are
+	unforgiving to the extent that a single character stops your program from compiling/running.
+	Accuracy demands this high only frustrates the beginner.
+</p>
+</div>
+
+<h3 class="anchor">Reframe <a class="anchor-link" title="permalink to section" href="#problem#reframe" name="problem#reframe">&para;</a></h3>
+<!--- new section -->
+<div class="text-block">
+<p>
+	It's not realistic to expect 5-7 year olds to build useful programs after playing a game.
+	Rather, a more effective goal is to introduce how to think like a programmer, and if possible, to make it fun and memorable.
+	That's what we based our solution on. Consequently, we focused on programming semantics, and
+	aggressively removed syntax's difficulty and frustration. 
+</p>
+<p>
+	For the same reason, we removed math and logical operations. Concrete objects and intuitive object combinations 
+	are naturally understood. This reasoning's why addition is often taught by adding apples (or another replacement fruit)
+	before adding symbols or numbers.
+</p>
+</div>
+
+<h2 class="anchor">Solution <a class="anchor-link" title="permalink to section" href="#solution" name="solution">&para;</a></h2>
+<!--- new section -->
+<div class="text-block">
+<p>
+	The main design objectives of our solution are extensibility and simplicity.
+</p>
+</div>
+
+<h3 class="anchor">Extensibility <a class="anchor-link" title="permalink to section" href="#solution#extensibility" name="solution#extensibility">&para;</a></h3>
+<!--- new section -->
+<div class="text-block">
+<p>
+	Extensibility means making it easy for anyone to create content for the game. Schools and
+	parents care about this because it affects how easily they can adopt our game to fit their curriculum.
+</p>
+<p>
+	We implemented extensibility through a level system. This system is described in our <a href="levels/drag_and_drop_api.txt">drag and drop API</a>.
+	Each level is a standalone JSON that includes all game play content.
+	With the game content entirely separated from the game engine, this is the strongest form of extensibility. 
+</p>
+</div>
+
+<h3 class="anchor">Simplicity <a class="anchor-link" title="permalink to section" href="#solution#simplicity" name="solution#simplicity">&para;</a></h3>
+<!--- new section -->
+<div class="text-block">
+<p>
+	Simplicity in user experience lets players follow their intuitions more naturally. 
+	This is all about removing extraneous difficulties not inherit to learning programming semantics.
+</p>
+<p>
+	Simplicity in the game engine leads to low development cost and wide distribution. We built it as a web application so
+	that any platform with internet access can play it without us having to specifically create versions for each platform.
+</p>
+<p>
+	We implemented simplicity through the data flow programming model. Every piece of data is represented as blocks
+	and nothing is done "off screen". Fundamentally a function is a mapping from input to output. The importance of
+	naturally thinking in this way cannot be overstated.
+</p>
+</div>
+
+
+<h2 class="anchor">Challenges <a class="anchor-link" title="permalink to section" href="#challenges" name="challenges">&para;</a></h2>
+<!--- new section -->
+<ul>
+	<li>lack of manpower - we were the only team with 2 members</li>
+	<li>task division - we solved this by defining the <a href="levels/drag_and_drop_api.txt">drag and drop API</a> very early</li>
+</ul>
+
+
+<h2 class="anchor">Reflection <a class="anchor-link" title="permalink to section" href="#reflection" name="reflection">&para;</a></h2>
+<!--- new section -->
+<div class="text-block">
+<p>
+	We won because we chose appropriate design objectives and aggressively based our design decisions on them.
+	Avoiding the common pitfall of a program trying to do too much, our game focuses and delivers on the areas
+	that matter to our target audience.
+</p>
+<p>
+	Designing for extensibility meant the deadline was more manageable.
+	Our minimum viable product (MVP) was the engine and the first level, with any additional levels seamlessly added with extra time.
+	We managed to produce 4 working levels that covers simple combination, if, while, and functions/modules.
+</p>
+<p>
+	Since I've often teamed up with Zhuowei, our teamwork proved decisive. The efficiency gain from experience cannot be stressed
+	more since we had only 7 hours from problem announcement to plan the solution, implement it, test it, document it, and create
+	the presentation for it (we had to submit the powerpoint presentation  within the alotted 7 hours even though we gave the presentation
+	the next day).
+</p>
+</div>
+
+<h2 class="anchor">Trivia <a class="anchor-link" title="permalink to section" href="#trivia" name="trivia">&para;</a></h2>
+<img class="side" src="img/Frosty_coatless_glasses.png">
+<ul>
+	<li>The name "Snowfun" was derived from me saying that it "was no fun"</li>
+	<li>"Funk" was another candidate for the name, but we decided against it</li>
+	<li>The snowmen visuals were selected after I came up with the name (<a href="img/imgcredit.txt">image credits</a>)</li>
+	<li>The snowman with the bowler hat is called Frosty while the snowman with the toque is called Chilly</li>
+	<li>Snowcoats make you colder (because you're covered in snow, obviously)</li>
+</ul>
+
+
+
+<h2 class="anchor">Gains from Experience <a class="anchor-link" title="permalink to section" href="#gains" name="gains">&para;</a></h2>
+<ul>
+	<li>$1000 (each) and a trophy</li>
+	<li>Experience on creating clean interfaces and separation of concerns</li>
+</ul>
+
+</div>
