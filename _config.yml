@@ -6,11 +6,11 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Funk
+title: Snowfun
 email: johnsonzhong@hotmail.ca
 description: > # this means to ignore newlines until "baseurl:"
-  Fun drag and drop programming language for kids.
-baseurl: "/Funk" # the subpath of your site, e.g. /blog
+  A fun way to learn functional programming Edit
+baseurl: "/snowfun" # the subpath of your site, e.g. /blog
 url: "http://johnsonzhong.me/" # the base hostname & protocol for your site
 twitter_username: Lemon_byte
 github_username:  Lemonpi
